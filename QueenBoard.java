@@ -21,8 +21,8 @@ public class QueenBoard{
             }
           }
         }
-        return result;
-      }
+      return result;
+    }
 
     public static void main(String[] args) {
       QueenBoard test = new QueenBoard(4);
