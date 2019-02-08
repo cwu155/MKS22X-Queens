@@ -40,13 +40,21 @@ public class QueenBoard{
     return true;
     }
 
-
-  // private boolean removeQueen(int r, int c){}
+  //Will prove v problematic later
+   private boolean removeQueen(int r, int c){
+     for (int i = 0; i < board.length; i++){
+       board[r][i] = 0;
+       board[i][i] = 0;
+     }
+       board[r][c] = 0;
+       return true;
+   }
 
 
     public static void main(String[] args) {
       QueenBoard test = new QueenBoard(8);
       test.addQueen(1,1);
+      test.addQueen(2,1);
       System.out.println(test.toString());
     }
 
