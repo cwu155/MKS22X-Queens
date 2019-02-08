@@ -24,7 +24,6 @@ public class QueenBoard{
             } else {
             result += board[i][j] + " ";
             }
-
           }
         }
 
