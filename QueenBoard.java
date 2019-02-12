@@ -67,6 +67,35 @@ public class QueenBoard{
     return true;
   }
 
+  /**
+ *@return false when the board is not solveable and leaves the board filled with zeros;
+ *        true when the board is solveable, and leaves the board in a solved state
+ *@throws IllegalStateException when the board starts with any non-zero value
+ */
+
+ public boolean solveHelper(int col){
+   if (col == board.length){
+     return true;
+   }
+
+   for (int i = 0; i < board.length; i++){
+     if (addQueen(i, col)){
+       if (solveHelper(col + 1)){
+         return true;
+       }
+     } else {
+       removeQueen(i, col);
+     }
+   }
+   return false;
+ }
+
+
+ public boolean solve(){
+   return solveHelper(0);
+ }
+
+
 
     public static void main(String[] args) {
       QueenBoard test = new QueenBoard(8);
