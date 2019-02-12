@@ -95,6 +95,29 @@ public class QueenBoard{
    return solveHelper(0);
  }
 
+ /**
+   *@return the number of solutions found, and leaves the board filled with only 0's
+   *@throws IllegalStateException when the board starts with any non-zero value
+   */
+   public int countSolutionsHelper(int col, int count){
+     if (col == board.length){
+       return count += 1;
+     }
+
+     for (int i = 0; i < board.length; i++){
+       if (addQueen(i, col)){
+         if (solveHelper(col + 1)) {count += 1;
+        }
+         removeQueen(i, col);
+      }
+
+    }
+    return count;
+  }
+
+    public int countSolutions(){
+      return countSolutionsHelper(0, 0);
+    }
 
 
     public static void main(String[] args) {
