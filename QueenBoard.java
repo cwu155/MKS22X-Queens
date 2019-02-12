@@ -42,7 +42,7 @@ public class QueenBoard{
       }
 
      for (int j = 0; r + j < board.length && c + j < board.length; j++){
-         board[r+j][c-j] = 1;
+         board[r+j][c+j] = 1;
      }
 
     board[r][c] = -1; //Queen is represented by -1
@@ -51,20 +51,29 @@ public class QueenBoard{
 
   //Will prove v problematic later
    private boolean removeQueen(int r, int c){
-     for (int i = 0; i < board.length; i++){
-       board[r][i] = 0;
-       board[i][i] = 0;
-     }
-       board[r][c] = 0;
-       return true;
-   }
+     for (int i = 0; i < board.length; i++) {
+      board[r][i] = 0;
+    }
+
+    for (int i = 1; r - i >= 0 && c + i < board.length; i++) {
+      board[r-i][c+i] = 0;
+    }
+
+    for (int i = 0; r + i < board.length && c + i < board.length; i++) {
+      board[r+i][c+i] = 0;
+    }
+
+    board[r][c] = 0;
+    return true;
+  }
 
 
     public static void main(String[] args) {
       QueenBoard test = new QueenBoard(8);
-      //test.addQueen(1,1);
+      test.addQueen(1,1);
       test.addQueen(5,3);
-      //test.removeQueen(1,1);
+      test.removeQueen(1,1);
+      test.removeQueen(5,3);
       System.out.println(test.toString());
     }
 
